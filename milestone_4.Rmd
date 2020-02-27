@@ -2,5 +2,18 @@
 title: "milestone_4"
 author: "Maria Burzillo"
 date: "2/26/2020"
-output: html_document
+output: bookdown::pdf_document2
+bibliography: ["bib.bib"]
+biblio-style: "apalike"
+link-citations: true
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::write_bib(c("knitr", "stringr"), "bib.bib", width = 60)
+
+```
+
+This is my pdf document^[This is a footnote.]
+
+`r '# References {-}'`
