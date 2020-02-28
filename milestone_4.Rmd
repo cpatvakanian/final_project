@@ -18,7 +18,7 @@ library(tidyverse)
 library(gt)
 ```
 
-This is my pdf document. Please refer to the Github repository of my final project for further information.^[[Github repository](https://github.com/mburzillo/final_project)]
+This is my pdf document. Please refer to the Github repository of my final project for further information.^[[Github repository](https://github.com/mburzillo/final_project)]. I make use of @R-knitr, @R-stringr, and @knitr2015. 
 
 
 ```{r fake_data, results="asis", echo=FALSE}
@@ -48,18 +48,12 @@ table <- data %>%
   cols_move(vars(age), vars(gender)) %>%
   cols_align("center")
 
-table
-  
-
-
 m1 <- lm(happiness ~ gender, data = data )
 m2 <- lm(happiness ~ gender + age, data = data )
 
 stargazer(m1, m2, header = FALSE,
           dep.var.labels=c("happiness"),
           covariate.labels=c("gender", "age"))
-
-print(m1)
 
 ```
 
