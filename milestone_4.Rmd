@@ -9,6 +9,8 @@ bibliography: bib.bib
 link_citations: true
 ---
 
+# Intro
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::write_bib(c("knitr", "stringr"), "bib.bib", width = 60)
@@ -18,10 +20,11 @@ library(tidyverse)
 library(gt)
 ```
 
-This is my pdf document. Please refer to the Github repository of my final project for further information.^[[Github repository](https://github.com/mburzillo/final_project)]. I make use of @R-knitr, @R-stringr, and @knitr2015. 
+This is my pdf document. Please refer to the Github repository of my final project for further information.^[[Github repository](https://github.com/mburzillo/final_project)] I make use of @R-knitr, @R-stringr, and @knitr2015. 
 
+# gt Table of Random Happiness Data
 
-```{r fake_data, results="asis", echo=FALSE}
+```{r fake_data, echo=FALSE}
 gender <- rbinom(20, 1, .5)
 happiness <- rnorm(20, .5, .25)
 age <- ceiling(rnorm(20, 40, 20))
@@ -48,13 +51,19 @@ table <- data %>%
   cols_move(vars(age), vars(gender)) %>%
   cols_align("center")
 
+table
+
 m1 <- lm(happiness ~ gender, data = data )
 m2 <- lm(happiness ~ gender + age, data = data )
 
+
+```
+# Stargazer Regression Table Explaining Happiness by Gender and Age
+
+```{r stargazer, results="asis", echo=FALSE}
 stargazer(m1, m2, header = FALSE,
           dep.var.labels=c("happiness"),
           covariate.labels=c("gender", "age"))
-
 ```
 
 
